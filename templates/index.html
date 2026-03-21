@@ -13,6 +13,8 @@
         <tr>
             <th>Task</th>
             <th>Added</th>
+            <th>Deadline</th>
+            <th>Explanation</th>
             <th>Action</th>
         </tr>
         {% for task in tasks %}
@@ -34,6 +36,8 @@
     <br>
     <form action="/", method="POST">
         <input type="text" name="content" id="content">
+        <input type="date" name="deadline" id="deadline">
+        <input type="text" name="explanation" id="explanation">
         <input type="submit" value="add task">
     </form> 
 

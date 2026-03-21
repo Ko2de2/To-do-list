@@ -25,9 +25,15 @@ def index():
     if request.method == "POST":
         task_content = request.form["content"]
         new_task = Todo(content=task_content)
+        task_deadline = request.form["deadline"]
+        new_deadline = Todo(deadlie=task_deadline)
+        task_explanation = request.form["explanation"]
+        new_explanation = Todo(explanation=task_explanation)
 
         try:
             db.session.add(new_task)
+            db.session.add(new_deadline)
+            db.session.add(new_explanation)
             db.session.commit()
             return redirect("/")
         except:
@@ -71,7 +77,5 @@ def update(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
 
 
