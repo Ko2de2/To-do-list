@@ -27,6 +27,7 @@ def index():
     if request.method == "POST":
         # get the information based in index.html
         task_content = request.form["content"]
+<<<<<<< HEAD
         task_deadline = request.form["deadline"]   
         task_explanation = request.form["explanation"]
         
@@ -36,6 +37,9 @@ def index():
             deadline=task_deadline,
             explanation=task_explanation
         )
+=======
+        new_task = Todo(content=task_content)
+>>>>>>> add-CSS1
 
         try:
             db.session.add(new_task)

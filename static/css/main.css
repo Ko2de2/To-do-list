@@ -2,17 +2,48 @@ body {
     margin: 0;
     font-family: sans-serif;
     text-align: center;
+    background-image: url("images/img2.jpg");
+    background-repeat : no-repeat;
+    background-attachment: fixed;
+    background-position : center;
+    background-size : cover;
 }
 
-table {
+h1{
+    font-family: "Press Start 2P", "sans-serif";
+    color :aliceblue;
+}
+
+#tr1 {
+    font-family: "Jersey 25", "sans-serif";
+    background-color: #dbe07e;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-    width: 20%;
+    color:rgb(158, 114, 240);
+    width: 30%;
+}
+
+.content-table {
+    font-family: "Jersey 25", "sans-serif";
+    background-color: aliceblue;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    color:black;
+    width: 30%;
 }
 
 th, td {
     padding: 10px;
     border: 1px solid black;
     text-align: center;
+}
+
+a{
+    color:rgb(99, 146, 216);
+}
+
+a:hover{
+    color:rgb(72, 72, 150);
 }

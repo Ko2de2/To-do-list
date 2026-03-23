@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<link rel="stylesheet" href="static/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&family=Jersey+25&family=Press+Start+2P&display=swap" rel="stylesheet">
 
 {% endblock %}
 
@@ -8,13 +10,11 @@
 <div class="content">
     <h1>Bounty Master</h1>
 
-    <table>
+    <table class="content-table">
 
-        <tr>
+        <tr id="tr1">
             <th>Task</th>
             <th>Added</th>
-            <th>Deadline</th>
-            <th>Explanation</th>
             <th>Action</th>
         </tr>
         {% for task in tasks %}
@@ -42,8 +42,6 @@
     <br>
     <form action="/", method="POST">
         <input type="text" name="content" id="content">
-        <input type="date" name="deadline" id="deadline">
-        <input type="text" name="explanation" id="explanation">
         <input type="submit" value="add task">
     </form> 
 
