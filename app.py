@@ -1,8 +1,9 @@
 # python app.py
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, jsonify, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
+import requests
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
@@ -26,8 +27,7 @@ class Todo(db.Model):
 def index():
     if request.method == "POST":
         # get the information based in index.html
-        task_content = request.form["content"]
-        
+        task_content = request.form["content"]      
         task_deadline = request.form["deadline"]   
         task_explanation = request.form["explanation"]
         
@@ -49,7 +49,15 @@ def index():
         # where the tasks come from
         tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('index.html', tasks=tasks)
-    
+
+@app.route('/AI_processing', methods=["POST"])
+def AI_processing():
+    user_input = request.json.get('text', '')
+
+    ai_response = requests.get(f"https://text.pollinations.ai/{user_input}")
+
+    return jsonify({'response': ai_response.text})
+
 @app.route('/delete/<int:id>')
 def delete(id):
     task_to_delete = Todo.query.get_or_404(id)

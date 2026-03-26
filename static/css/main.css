@@ -14,6 +14,16 @@ h1{
     color :aliceblue;
 }
 
+h2{
+    font-family: "Jersey 25", "sans-serif";
+    color: aliceblue;   
+}
+
+#ai-response{
+    font-family: "Jersey 25", "sans-serif";
+    color: aliceblue;
+}
+
 #tr1 {
     font-family: "Jersey 25", "sans-serif";
     background-color: #dbe07e;
@@ -22,6 +32,11 @@ h1{
     margin-right: auto;
     color:rgb(158, 114, 240);
     width: 30%;
+}
+
+#AItitle1 {
+    font-family: "Press Start 2P", "sans-serif";
+    color :aliceblue;
 }
 
 .content-table {

@@ -49,5 +49,55 @@
         <input type="submit" value="add task">
     </form> 
 
+    <div class="container">
+        <h1 id="AItitle1">
+            Ask AI for opinions!
+        </h1>
+        <div class="Input box">
+            <h2>Your questions</h2>
+            <textarea id="user-input" placeholder="Type it here!"></textarea>
+            <button onclick="sendRequest()">Get AI response</button>
+        </div>
+        <div class="Output box">
+            <h2 id="AItitle2">AI Answer</h2>
+            <div id="ai-response">
+                Waiting for input
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    async function sendRequest(){
+        // Catch the value of input and output from content inside of class container
+        const UserInput = document.getElementById('user-input').value;
+        const ResponseDiv = document.getElementById('ai-response'); // changing the text in output box
+
+        // If the user input is blank
+        if (!UserInput.trim()){
+            ResponseDiv.innerHTML = "Please ask me a question!"
+            return; // Stop the function from continuing
+        }
+
+        ResponseDiv.innerHTML = "<div class='loading'>Please wait for a moment.....</div>"
+
+        try {
+            // The data sent to /AI_processing
+            const response = await fetch('/AI_processing', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", // telling that file type is JSON
+                },
+                body: JSON.stringify({text: UserInput})
+            });
+
+            const data = await response.json() //convert the data from response from flask into JavaScript object
+            ResponseDiv.innerHTML = data.response;
+        }
+
+        catch(error){
+            ResponseDiv.innerHTML = "Oh an error, please try again!"
+            console.error('Error:', error);
+        }
+    }
+</script>
 {% endblock %}
